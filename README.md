@@ -29,7 +29,7 @@ Avito GPU Helper — это помощник покупателя б/у виде
 - **Аналогичные предложения** — топ-5 похожих объявлений с ценами
 - **Badges на странице поиска** — компактные индикаторы прямо на карточках объявлений
 
-## 📸 Скриншоты (сгенерированные заглушки)
+## 📸 Скриншоты
 
 ### Виджет на карточке товара
 ![Виджет](docs/screenshots/01-widget-product-page.png)
@@ -269,7 +269,7 @@ chore: обновлены зависимости
 
 Расширение полностью бесплатное и без рекламы. Если оно сэкономило вам деньги на покупке видеокарты — поддержите разработку:
 
-👉 [**Boosty**](https://boosty.to/avito-gpu-helper) | [**DonationAlerts**](https://donationalerts.com/r/avito-gpu-helper)
+👉 [**Boosty**](https://boosty.to/avito_gpu_helper) | [**DonationAlerts**](https://www.donationalerts.com/r/forsejdm)
 
 Подробности: [DONATE.md](DONATE.md)
 
