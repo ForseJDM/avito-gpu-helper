@@ -1,0 +1,111 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. 3.1.0)'
+        required: true
+        default: '3.1.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set version
+        id: version
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            TAG=${GITHUB_REF#refs/tags/v}
+            echo "version=${TAG}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate manifest version matches
+        run: |
+          MANIFEST_VERSION=$(python3 -c "import json; print(json.load(open('extension/manifest.json'))['version'])")
+          if [ "$MANIFEST_VERSION" != "${{ steps.version.outputs.version }}" ]; then
+            echo "❌ Manifest version ($MANIFEST_VERSION) != requested version (${{ steps.version.outputs.version }})"
+            exit 1
+          fi
+          echo "✅ Version matches: $MANIFEST_VERSION"
+
+      - name: Syntax check all JS files
+        run: |
+          apt-get update -qq && apt-get install -y -qq nodejs > /dev/null 2>&1
+          FAILED=0
+          for f in extension/src/*.js extension/src/core/*.js extension/src/ui/*.js extension/src/db/*.js; do
+            if ! node --check "$f" 2>&1; then
+              echo "❌ Syntax error in $f"
+              FAILED=1
+            fi
+          done
+          if [ $FAILED -eq 1 ]; then exit 1; fi
+          echo "✅ All JS files pass syntax check"
+
+      - name: Create CWS package (extension only)
+        run: |
+          mkdir -p dist
+          cd extension
+          zip -r "../dist/avito-gpu-helper-v${{ steps.version.outputs.version }}-cws.zip" . \
+            -x "*.DS_Store" "*/.git/*" "*/_metadata/*"
+          cd ..
+          ls -la dist/
+
+      - name: Create source package (full repo)
+        run: |
+          tar czf "dist/avito-gpu-helper-v${{ steps.version.outputs.version }}-source.tar.gz" \
+            --exclude='.git' --exclude='node_modules' --exclude='parser/debug' \
+            --exclude='parser/__pycache__' \
+            extension parser docs .github README.md LICENSE CHANGELOG.md CONTRIBUTING.md DONATE.md
+
+      - name: Compute checksums
+        run: |
+          cd dist
+          sha256sum *.zip *.tar.gz > checksums-sha256.txt
+          cat checksums-sha256.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-v${{ steps.version.outputs.version }}
+          path: dist/
+          retention-days: 90
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Avito GPU Helper v${{ steps.version.outputs.version }}
+          body_path: extension/CHANGELOG.md
+          files: |
+            dist/avito-gpu-helper-v${{ steps.version.outputs.version }}-cws.zip
+            dist/avito-gpu-helper-v${{ steps.version.outputs.version }}-source.tar.gz
+            dist/checksums-sha256.txt
+          draft: true
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "## Release Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Artifact | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|------|" >> $GITHUB_STEP_SUMMARY
+          for f in dist/*; do
+            SIZE=$(du -h "$f" | cut -f1)
+            echo "| \`$(basename $f)\` | $SIZE |" >> $GITHUB_STEP_SUMMARY
+          done

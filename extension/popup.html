@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/popup.css">
+</head>
+<body>
+  <div class="agpuh-popup">
+    <!-- Header -->
+    <div class="agpuh-popup-header">
+      <span class="agpuh-popup-logo">&#128187;</span>
+      <span class="agpuh-popup-title">GPU Helper</span>
+      <span class="agpuh-popup-version">v3.1.0</span>
+    </div>
+
+    <!-- Status block -->
+    <div class="agpuh-popup-section" id="agpuh-status-section">
+      <div class="agpuh-popup-section-title">Статус цен</div>
+      <div class="agpuh-popup-status-row">
+        <span class="agpuh-popup-label">Источник:</span>
+        <span class="agpuh-popup-value" id="agpuh-source-value">—</span>
+      </div>
+      <div class="agpuh-popup-status-row">
+        <span class="agpuh-popup-label">Обновлено:</span>
+        <span class="agpuh-popup-value" id="agpuh-updated-value">—</span>
+      </div>
+      <div class="agpuh-popup-status-row">
+        <span class="agpuh-popup-label">Покрытие:</span>
+        <span class="agpuh-popup-value" id="agpuh-coverage-value">—</span>
+      </div>
+      <div class="agpuh-popup-status-row">
+        <span class="agpuh-popup-label">Возраст:</span>
+        <span class="agpuh-popup-value" id="agpuh-age-value">—</span>
+      </div>
+      <button class="agpuh-popup-btn agpuh-popup-btn-primary" id="agpuh-force-update">
+        Обновить цены
+      </button>
+    </div>
+
+    <!-- Settings block -->
+    <div class="agpuh-popup-section">
+      <div class="agpuh-popup-section-title">Настройки</div>
+
+      <div class="agpuh-popup-toggle-row">
+        <span class="agpuh-popup-toggle-label">Виджет включён</span>
+        <label class="agpuh-popup-switch">
+          <input type="checkbox" id="agpuh-setting-enabled" checked>
+          <span class="agpuh-popup-slider"></span>
+        </label>
+      </div>
+
+      <div class="agpuh-popup-toggle-row">
+        <span class="agpuh-popup-toggle-label">Компактный режим</span>
+        <label class="agpuh-popup-switch">
+          <input type="checkbox" id="agpuh-setting-compact">
+          <span class="agpuh-popup-slider"></span>
+        </label>
+      </div>
+
+      <div class="agpuh-popup-toggle-row">
+        <span class="agpuh-popup-toggle-label">Sticky (прилипание)</span>
+        <label class="agpuh-popup-switch">
+          <input type="checkbox" id="agpuh-setting-sticky">
+          <span class="agpuh-popup-slider"></span>
+        </label>
+      </div>
+
+      <div class="agpuh-popup-toggle-row">
+        <span class="agpuh-popup-toggle-label">Badge на странице поиска</span>
+        <label class="agpuh-popup-switch">
+          <input type="checkbox" id="agpuh-setting-badges" checked>
+          <span class="agpuh-popup-slider"></span>
+        </label>
+      </div>
+
+      <!-- v3.0.0: Уведомления о выгодных предложениях -->
+      <div class="agpuh-popup-toggle-row">
+        <span class="agpuh-popup-toggle-label">Уведомления «Выгодно»</span>
+        <label class="agpuh-popup-switch">
+          <input type="checkbox" id="agpuh-setting-notifications">
+          <span class="agpuh-popup-slider"></span>
+        </label>
+      </div>
+      <div class="agpuh-popup-hint" id="agpuh-notifications-hint">
+        Push при статусе 🟢 «Выгодно». По умолчанию выключено, чтобы не спамить.
+      </div>
+
+      <div class="agpuh-popup-field-row">
+        <span class="agpuh-popup-field-label">Позиция виджета</span>
+        <select id="agpuh-setting-position" class="agpuh-popup-select">
+          <option value="right">Справа</option>
+          <option value="left">Слева</option>
+          <option value="saved">Сохранённая</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- History block -->
+    <div class="agpuh-popup-section">
+      <div class="agpuh-popup-section-title">
+        История просмотров
+        <span class="agpuh-popup-badge" id="agpuh-history-count">0</span>
+      </div>
+      <div class="agpuh-popup-history" id="agpuh-history-list">
+        <div class="agpuh-popup-history-empty">Пока нет просмотренных GPU</div>
+      </div>
+      <button class="agpuh-popup-btn agpuh-popup-btn-danger" id="agpuh-clear-history">
+        Очистить историю
+      </button>
+    </div>
+  </div>
+
+  <script src="src/popup.js"></script>
+</body>
+</html>

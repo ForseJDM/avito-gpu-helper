@@ -1,0 +1,352 @@
+/* =====================================================
+   Avito GPU Helper v2.2.0 - Popup Styles
+   ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: #111827;
+  background: #ffffff;
+}
+
+.agpuh-popup {
+  width: 100%;
+}
+
+/* --- Header --- */
+.agpuh-popup-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #00aaff 0%, #0066ff 100%);
+  color: #fff;
+}
+
+.agpuh-popup-logo {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.agpuh-popup-title {
+  font-weight: 700;
+  font-size: 15px;
+  flex: 1;
+  letter-spacing: 0.2px;
+}
+
+.agpuh-popup-version {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+/* --- Section --- */
+.agpuh-popup-section {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.agpuh-popup-section:last-child {
+  border-bottom: none;
+}
+
+.agpuh-popup-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- Status rows --- */
+.agpuh-popup-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.agpuh-popup-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.agpuh-popup-value {
+  font-size: 13px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.agpuh-popup-value.agpuh-stale {
+  color: #854d0e;
+}
+
+.agpuh-popup-value.agpuh-fresh {
+  color: #166534;
+}
+
+/* --- Toggle switch --- */
+.agpuh-popup-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.agpuh-popup-toggle-label {
+  font-size: 13px;
+  color: #374151;
+}
+
+.agpuh-popup-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.agpuh-popup-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.agpuh-popup-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #d1d5db;
+  border-radius: 22px;
+  transition: background 0.2s ease;
+}
+
+.agpuh-popup-slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.agpuh-popup-switch input:checked + .agpuh-popup-slider {
+  background: #0066ff;
+}
+
+.agpuh-popup-switch input:checked + .agpuh-popup-slider::before {
+  transform: translateX(18px);
+}
+
+/* --- Select --- */
+.agpuh-popup-field-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.agpuh-popup-field-label {
+  font-size: 13px;
+  color: #374151;
+}
+
+.agpuh-popup-select {
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.agpuh-popup-select:focus {
+  border-color: #0066ff;
+}
+
+/* --- Buttons --- */
+.agpuh-popup-btn {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s ease, transform 0.1s ease;
+  font-family: inherit;
+}
+
+.agpuh-popup-btn:active {
+  transform: scale(0.98);
+}
+
+.agpuh-popup-btn-primary {
+  background: #0066ff;
+  color: #fff;
+}
+
+.agpuh-popup-btn-primary:hover {
+  background: #0052cc;
+}
+
+.agpuh-popup-btn-primary:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.agpuh-popup-btn-danger {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.agpuh-popup-btn-danger:hover {
+  background: #fee2e2;
+}
+
+/* --- Badge --- */
+.agpuh-popup-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 6px;
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 9px;
+}
+
+/* --- History --- */
+.agpuh-popup-history {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 4px;
+}
+
+.agpuh-popup-history-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px 0;
+}
+
+.agpuh-popup-history-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 12px;
+}
+
+.agpuh-popup-history-item:last-child {
+  border-bottom: none;
+}
+
+/* Clickable history item (v2.2.0 hotfix) */
+.agpuh-popup-history-clickable {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 6px 4px;
+  margin: 0 -4px;
+  transition: background 0.15s ease;
+}
+
+.agpuh-popup-history-clickable:hover {
+  background: #eff6ff;
+}
+
+.agpuh-popup-history-clickable:hover .agpuh-popup-history-model {
+  color: #0066ff;
+}
+
+.agpuh-popup-history-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.agpuh-popup-history-dot-green { background: #22c55e; }
+.agpuh-popup-history-dot-blue  { background: #3b82f6; }
+.agpuh-popup-history-dot-red   { background: #ef4444; }
+.agpuh-popup-history-dot-orange{ background: #f97316; }
+.agpuh-popup-history-dot-gray  { background: #9ca3af; }
+
+.agpuh-popup-history-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.agpuh-popup-history-model {
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agpuh-popup-history-meta {
+  color: #9ca3af;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agpuh-popup-history-price {
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+/* --- Scrollbar --- */
+.agpuh-popup-history::-webkit-scrollbar {
+  width: 4px;
+}
+
+.agpuh-popup-history::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.agpuh-popup-history::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+/* v3.0.0 — Hint под настройками */
+.agpuh-popup-hint {
+  font-size: 10px;
+  color: #6b7280;
+  line-height: 1.4;
+  padding: 4px 12px 8px 12px;
+  margin-top: -4px;
+}

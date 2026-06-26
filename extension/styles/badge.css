@@ -1,0 +1,114 @@
+/* =====================================================
+   Avito GPU Helper v2.3.0 - Badge Styles
+   Mini color-coded badges injected into search result
+   cards on Avito search pages.
+   All classes prefixed with agpuh-badge- to avoid conflicts.
+   ===================================================== */
+
+/* --- Badge container --- */
+.agpuh-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  cursor: default;
+  pointer-events: auto;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  animation: agpuh-badge-appear 0.2s ease-out;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.agpuh-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes agpuh-badge-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Badge icon --- */
+.agpuh-badge-icon {
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* --- Badge label --- */
+.agpuh-badge-label {
+  flex-shrink: 0;
+}
+
+/* --- Color variants --- */
+
+/* Green: great_deal (Выгодно) */
+.agpuh-badge-green {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* Blue: fair (Норма) */
+.agpuh-badge-blue {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+/* Orange: suspiciously_cheap_warn (Подозрение) */
+.agpuh-badge-orange {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fdba74;
+}
+
+/* Red: suspiciously_cheap (Скам) + overpriced (Дорого) */
+.agpuh-badge-red {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  animation: agpuh-badge-appear 0.2s ease-out, agpuh-badge-pulse-red 2s ease-in-out infinite;
+}
+
+@keyframes agpuh-badge-pulse-red {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* --- Responsive: smaller badges on small screens --- */
+@media (max-width: 768px) {
+  .agpuh-badge {
+    padding: 2px 6px;
+    font-size: 10px;
+    top: 4px;
+    right: 4px;
+    border-radius: 4px;
+  }
+
+  .agpuh-badge-icon {
+    font-size: 10px;
+  }
+}

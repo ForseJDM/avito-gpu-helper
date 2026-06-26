@@ -1,0 +1,104 @@
+{
+  "extensionName": {
+    "message": "Avito GPU Helper"
+  },
+  "extensionDescription": {
+    "message": "Помощник покупателя видеокарт на Авито: realtime-цены, анализ продавца, состояние товара, сравнение с аналогами и защита от скама."
+  },
+  "popupTitle": {
+    "message": "Avito GPU Helper"
+  },
+  "btnUpdatePrices": {
+    "message": "Обновить цены"
+  },
+  "btnUpdating": {
+    "message": "Обновление..."
+  },
+  "btnClearHistory": {
+    "message": "Очистить историю"
+  },
+  "settingEnabled": {
+    "message": "Виджет включён"
+  },
+  "settingCompact": {
+    "message": "Компактный режим"
+  },
+  "settingSticky": {
+    "message": "Sticky (прилипание)"
+  },
+  "settingBadges": {
+    "message": "Badge на странице поиска"
+  },
+  "settingNotificationsGreatDeal": {
+    "message": "Уведомления «Выгодно»"
+  },
+  "settingNotificationsHint": {
+    "message": "Push при статусе 🟢 «Выгодно». По умолчанию выключено, чтобы не спамить."
+  },
+  "settingPosition": {
+    "message": "Позиция виджета"
+  },
+  "posRight": {
+    "message": "Справа"
+  },
+  "posLeft": {
+    "message": "Слева"
+  },
+  "posSaved": {
+    "message": "Сохранённая"
+  },
+  "sourceRemote": {
+    "message": "Удалённый"
+  },
+  "sourceLocal": {
+    "message": "Локальный"
+  },
+  "neverUpdated": {
+    "message": "Никогда"
+  },
+  "justNow": {
+    "message": "Только что"
+  },
+  "historyEmpty": {
+    "message": "Пока нет просмотренных GPU"
+  },
+  "conditionNew": {
+    "message": "Новое"
+  },
+  "conditionLikeNew": {
+    "message": "Как новое"
+  },
+  "conditionUsed": {
+    "message": "Б/У"
+  },
+  "conditionUnknown": {
+    "message": "Не указано"
+  },
+  "sellerReliable": {
+    "message": "Надёжный"
+  },
+  "sellerMedium": {
+    "message": "Средний"
+  },
+  "sellerRisky": {
+    "message": "Риски"
+  },
+  "sellerUnknown": {
+    "message": "Недостаточно данных"
+  },
+  "comparisonTitle": {
+    "message": "Аналогичные объявления"
+  },
+  "comparisonLoading": {
+    "message": "Загрузка аналогов..."
+  },
+  "comparisonEmpty": {
+    "message": "Аналоги не найдены. Попробуйте обновить позже."
+  },
+  "comparisonFetchFailed": {
+    "message": "Не удалось получить данные. Возможно, Avito временно недоступен."
+  },
+  "notificationGreatDealTitle": {
+    "message": "Выгодное предложение"
+  }
+}

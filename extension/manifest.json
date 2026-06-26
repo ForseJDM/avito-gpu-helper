@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Avito GPU Helper",
+  "version": "3.1.0",
+  "description": "Помощник покупателя видеокарт на Авито: realtime-цены, анализ продавца, состояние товара, сравнение с аналогами и защита от скама.",
+  "default_locale": "ru",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://raw.githubusercontent.com/*",
+    "https://www.avito.ru/*",
+    "https://avito.ru/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'self'"
+  },
+  "background": {
+    "service_worker": "src/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.avito.ru/*", "https://avito.ru/*"],
+      "js": [
+        "src/db/gpu-market-db.js",
+        "src/core/price-updater.js",
+        "src/core/gpu-detector.js",
+        "src/core/price-detector.js",
+        "src/core/condition-detector.js",
+        "src/core/fair-price-engine.js",
+        "src/core/anti-scam-engine.js",
+        "src/core/seller-analyzer.js",
+        "src/core/realtime-prices.js",
+        "src/ui/widget-drag.js",
+        "src/ui/widget-renderer.js",
+        "src/ui/comparison-panel.js",
+        "src/ui/badge-renderer.js",
+        "src/content.js"
+      ],
+      "css": ["styles/widget.css", "styles/badge.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Avito GPU Helper v3.1.0",
+    "default_popup": "popup.html"
+  }
+}

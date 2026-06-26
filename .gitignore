@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Build artifacts
+dist/
+build/
+*.zip
+*.crx
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Test
+coverage/
+.nyc_output/
+
+# Playwright
+parser/debug/
+parser/test-results/
+parser/playwright-report/
+
+# Chrome extension dev
+extension/_metadata/
+extension/*.crx
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Private
+.private/
+secrets/
+*.key
+*.pem
