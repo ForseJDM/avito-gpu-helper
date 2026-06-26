@@ -44,7 +44,7 @@ jobs:
 
       - name: Syntax check all JS files
         run: |
-          apt-get update -qq && apt-get install -y -qq nodejs > /dev/null 2>&1
+          # Node.js is preinstalled on ubuntu-latest
           FAILED=0
           for f in extension/src/*.js extension/src/core/*.js extension/src/ui/*.js extension/src/db/*.js; do
             if ! node --check "$f" 2>&1; then
@@ -67,9 +67,8 @@ jobs:
       - name: Create source package (full repo)
         run: |
           tar czf "dist/avito-gpu-helper-v${{ steps.version.outputs.version }}-source.tar.gz" \
-            --exclude='.git' --exclude='node_modules' --exclude='parser/debug' \
-            --exclude='parser/__pycache__' \
-            extension parser docs .github README.md LICENSE CHANGELOG.md CONTRIBUTING.md DONATE.md
+            --exclude='.git' --exclude='node_modules' \
+            extension docs .github README.md LICENSE CONTRIBUTING.md DONATE.md .gitignore
 
       - name: Compute checksums
         run: |

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Avito GPU Helper",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Помощник покупателя видеокарт на Авито: realtime-цены, анализ продавца, состояние товара, сравнение с аналогами и защита от скама.",
   "default_locale": "ru",
   "permissions": [
